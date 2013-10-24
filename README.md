@@ -16,7 +16,9 @@ Just copy the script somewhere in your `PATH` and make it executable.
 
 ## Usage
 
-I use this script as an over-simplified and lightweight alternative to Vagrant for managing my (web) development virtual machine (VM).
+I use this script as an over-simplified and lightweight alternative to Vagrant for managing my (web) development virtual machines (VM).
+
+To setup the script set the four variables (`_vm`, `_vhost`, `_rmnt`, `_lmnt`) in the script, in the section between `## configuration: start` and `## configuration: end`. Future versions of the script will support external configuration files or command arguments.
 
 The script accepts only three arguments: up, down and status:
 
