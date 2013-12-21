@@ -49,7 +49,7 @@ _error() {
 }
 
 # check if all requirements are available
-for _cmd in VBoxHeadless VBoxManage sshfs fusermount ping grep; do
+for _cmd in VBoxHeadless VBoxManage sshfs ping grep; do
 	which ${_cmd} >/dev/null 2>&1 || \
 		_error "${_cmd} is not installed or accessible"
 done
@@ -61,10 +61,10 @@ case "$1" in
 		# start the vm
 		VBoxHeadless -s ${_vm} &
 
-		# wait for the guest to come up and start the network
-		# the guest 
+		# wait for the guest to come up and listen for 
+		# ssh connections
 		while true; do
-			ping -c 1 -q "${_vhost}" >/dev/null 2>&1 \
+			ssh -q -o ConnectTimeout=1 ${_vhost} exit 2>&1 \
 				&& break || sleep 1
 		done
 
@@ -78,8 +78,10 @@ case "$1" in
 	d|down)
 		_is_on || _error "${_vm} is not running"
 
-		# unmount local path
-		fusermount -u ${_lmnt} || \
+		# unmount local path: try fusermount first (Linux)
+		# or umount as fallback (OS X)
+		fusermount -u  ${_lmnt} >/dev/null 2>&1 || \
+			umount ${_lmnt}                 || \
 			_error "cannot unmount ${_lmnt}"
 
 		# let the vm sleep
