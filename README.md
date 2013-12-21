@@ -6,7 +6,7 @@ A simple shell script for managing virtualbox (web) development environments.
 
 * [Virtualbox](http://virtualbox.org)
 * [sshfs](http://fuse.sourceforge.net/sshfs.html)
-* Standard UNIX tools: ping, grep and of course sh.
+* Standard UNIX tools: grep and of course sh.
 
 Tested on Linux, OS X.
 

@@ -49,7 +49,7 @@ _error() {
 }
 
 # check if all requirements are available
-for _cmd in VBoxHeadless VBoxManage sshfs ping grep; do
+for _cmd in VBoxHeadless VBoxManage sshfs grep; do
 	which ${_cmd} >/dev/null 2>&1 || \
 		_error "${_cmd} is not installed or accessible"
 done
