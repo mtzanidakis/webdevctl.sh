@@ -26,11 +26,14 @@ _vm="webdev"
 # guest's hostname (default: same as _vm's value)
 _vhost="${_vm}"
 
+# switch to zeroconf on OS X
+[ "$(uname -s)" = "Darwin" ] && _vhost="${_vhost}.local"
+
 # the remote mount point (absolute path in guest)
 _rmnt="/var/www/vhosts"
 
 # the local mount point (absolute path in host)
-_lmnt="$HOME/sites"
+_lmnt="$HOME/Sites"
 
 ## configuration: end
 

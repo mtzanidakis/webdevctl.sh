@@ -8,7 +8,7 @@ A simple shell script for managing virtualbox (web) development environments.
 * [sshfs](http://fuse.sourceforge.net/sshfs.html)
 * Standard UNIX tools: grep and of course sh.
 
-Tested on Linux, OS X.
+Tested on Linux, OS X. On OS X Zeroconf is used for ssh connections.
 
 ## Installation
 
